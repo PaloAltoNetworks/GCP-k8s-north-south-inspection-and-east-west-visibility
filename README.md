@@ -9,7 +9,7 @@ The lab guide and attached files have been created to leverage terraform to depl
 4.  North/South and East/West traffic visbility
 ```
 The following picture shows an overview of the environment:
-![k8s-lab](https://user-images.githubusercontent.com/21991161/41857225-9e6d5ba2-785c-11e8-8e06-cbbeec826dec.jpg)
+![k8s-lab](https://user-images.githubusercontent.com/21991161/41859446-cbbe64de-7861-11e8-9fdd-6ada41215459.jpg)
 
 
 # Support Policy
