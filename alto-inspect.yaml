@@ -1,0 +1,44 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: alto-inspect
+  namespace: kube-system
+spec:
+  template:
+    metadata:
+      labels:
+        app: alto-inspect
+    spec:
+      hostNetwork: true
+      containers:
+      - name: alto-inspect
+        image: djspears/panw:alto-inspect
+        env:
+        - name: PYTHONPATH
+          value: "/usr/local/lib/python2.7" 
+        command: [ "/root/nwcfg/runall.sh" ]
+        #args: [ "cbr0 10.5.2.4" ]
+        #command: [ "/bin/bash", "-c", "--" ]
+        #args: [ "while true; do sleep 10; done;" ]
+        securityContext:
+          privileged: true
+          capabilities:
+            add: ["SYS_ADMIN"]
+        volumeMounts:
+        - name: docker-sock-mount
+          mountPath: /var/run/docker.sock
+        - name: docker-netns-mount
+          mountPath: /var/run/netns/
+        - name: docker-lib-modules 
+          mountPath: /lib/modules/
+      volumes:
+      - name: docker-sock-mount
+        hostPath:
+         path: /var/run/docker.sock
+        # directory location on host
+      - name: docker-netns-mount
+        hostPath:
+         path: /var/run/docker/netns/
+      - name: docker-lib-modules
+        hostPath: 
+          path: /lib/modules/
