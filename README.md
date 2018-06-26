@@ -4,9 +4,9 @@ The lab guide and attached files have been created to leverage terraform to depl
 
 ```
 1.  VPC Network with Trust, Untrust, and MGMT subnet
-2.  PANW Firewall
+2.  VM-Series Firewall
 3.  GKE cluster with a two tier web application and front end internal load balancer
-4.  North/South and East/West traffic visbility
+4.  North/South traffic enforcement and East/West traffic visbility
 ```
 The following picture shows an overview of the environment:
 ![k8s-lab](https://user-images.githubusercontent.com/21991161/41859446-cbbe64de-7861-11e8-9fdd-6ada41215459.jpg)
