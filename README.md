@@ -1,4 +1,4 @@
-# GCP-k8s-east-west-visibility
+# Protecting-GKE-2-tier-Container-App-with-VM-Series-firewalls-via-Terraform
 
 The lab guide and attached files have been created to leverage terraform to deploy the following environment in GCP:
 
