@@ -58,7 +58,7 @@ resource "google_compute_route" "trust" {
   network                = "${google_compute_network.trust.self_link}"
   next_hop_instance      = "${element(google_compute_instance.firewall.*.name,count.index)}"
   next_hop_instance_zone = "${var.zone}"
-  priority               = 100
+  priority               = 1001
 
   depends_on = ["google_compute_instance.firewall",
     "google_compute_network.trust",
