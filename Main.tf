@@ -133,19 +133,19 @@ resource "google_compute_instance" "firewall" {
 
   network_interface {
     subnetwork    = "${google_compute_subnetwork.management-sub.self_link}"
-    address       = "10.5.0.4"
+    network_ip       = "10.5.0.4"
     access_config = {}
   }
 
   network_interface {
     subnetwork    = "${google_compute_subnetwork.untrust-sub.self_link}"
-    address       = "10.5.1.4"
+    network_ip       = "10.5.1.4"
     access_config = {}
   }
 
   network_interface {
     subnetwork = "${google_compute_subnetwork.trust-sub.self_link}"
-    address    = "10.5.2.4"
+    network_ip    = "10.5.2.4"
   }
 
   boot_disk {
