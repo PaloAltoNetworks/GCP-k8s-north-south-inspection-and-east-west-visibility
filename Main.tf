@@ -203,6 +203,17 @@ resource "google_container_cluster" "cluster" {
     "google_compute_subnetwork.trust-sub"
   ]
 }
+
+// Create VPC route for cluster outbound access - bypass firewall
+resource "google_compute_route" "apiserver-outbound" {
+  name                   = "apiserver-outbound"
+  dest_range             = "${google_container_cluster.cluster.endpoint}/32"
+  network                = "${google_compute_network.trust.self_link}"
+  next_hop_gateway       = "default-internet-gateway"
+  priority               = 1001
+
+  depends_on = ["google_container_cluster.cluster"]
+}
 output "pan-tf-trust-ip" {
   value = "${google_compute_instance.firewall.*.network_interface.2.address}"
 }
@@ -213,4 +224,8 @@ output "pan-tf-name" {
 
 output "k8s-cluster-name" {
   value = "${google_container_cluster.cluster.*.name}"
+}
+
+output "k8s-cluster-endpoint" {
+  value = "${google_container_cluster.cluster.endpoint}"
 }
