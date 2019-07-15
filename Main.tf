@@ -229,3 +229,7 @@ output "k8s-cluster-name" {
 output "k8s-cluster-endpoint" {
   value = "${google_container_cluster.cluster.endpoint}"
 }
+
+output "kubectl-connection" {
+  value = "gcloud container clusters get-credentials ${google_container_cluster.cluster.name} --zone ${var.zone} --project ${var.my_gcp_project}"
+}
